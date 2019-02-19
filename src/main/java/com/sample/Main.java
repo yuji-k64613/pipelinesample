@@ -59,7 +59,7 @@ public class Main {
             final String CONTENT_TYPE = "text/plane; charset=UTF-8";
             resp.setContentType(CONTENT_TYPE);
             final PrintWriter out = resp.getWriter();
-            out.println("hello, world! v3.0 devel");
+            out.println("hello, world! v4.0 devel");
             out.close();
         }
     }
