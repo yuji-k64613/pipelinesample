@@ -1,0 +1,6 @@
+{
+  "name": "Heroku Sample",
+  "description": "heroku sample",
+  "repository": "https://github.com/yuji-k64613/pipelinesample.git",
+  "keywords": ["java", "express", "static"]
+}
