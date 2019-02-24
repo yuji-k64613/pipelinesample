@@ -18,6 +18,12 @@ import org.eclipse.jetty.server.handler.ResourceHandler;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
 
+import java.sql.DriverManager;
+import java.net.URI;
+import java.sql.SQLException;
+import java.net.URISyntaxException;
+import java.sql.Connection;
+
 //
 // http://localhost:8080/hello
 //
@@ -61,8 +67,30 @@ public class Main {
             final PrintWriter out = resp.getWriter();
             out.println("hello, world!");
             out.println("DEVEL v1.0");
+
+            try {
+                Connection con = getConnection();
+                out.println(con.toString());
+            }
+            catch (Exception e){
+                out.println(e.toString());
+            }
             out.close();
         }
     }
+
+    private static Connection getConnection()
+        throws URISyntaxException, SQLException {
+        URI dbUri = new URI(System.getenv("DATABASE_URL"));
+
+        String username = dbUri.getUserInfo().split(":")[0];
+        String password = dbUri.getUserInfo().split(":")[1];
+        String dbUrl = "jdbc:postgresql://" 
+            + dbUri.getHost() 
+            + ':' + dbUri.getPort() 
+            + dbUri.getPath() + "?sslmode=require";
+
+        return DriverManager.getConnection(dbUrl, username, password);
+}
 }
 
