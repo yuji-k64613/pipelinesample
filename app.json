@@ -1,0 +1,8 @@
+{
+  "name": "Heroku Sample",
+  "description": "heroku sample",
+  "repository": "https://github.com/yuji-k64613/pipelinesample.git",
+  "logo": "https://www.herokucdn.com/deploy/button.png
+  ",
+  "keywords": ["java", "express", "static"]
+}
